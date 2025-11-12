@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopEase - E-Commerce Portal</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    header {
+        background-color: #0078ff;
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    nav {
+        background-color: #333;
+        display: flex;
+        justify-content: center;
+    }
+    nav a {
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+    nav a:hover {
+        background-color: #0078ff;
+    }
+    section {
+        display: none;
+        padding: 20px;
+    }
+    section.active {
+        display: block;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px gray;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+    }
+    input[type="submit"] {
+        background-color: #0078ff;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #005ccc;
+    }
+</style>
+</head>
+<body>
+
+<header>Welcome to ShopEase</header>
+
+<nav>
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('products')">Products</a>
+    <a href="#" onclick="showSection('orders')">Orders</a>
+    <a href="#" onclick="showSection('wishlist')">Wishlist</a>
+    <a href="#" onclick="showSection('about')">About Us</a>
+    <a href="#" onclick="showSection('contact')">Contact Us</a>
+    <a href="#" onclick="showSection('login')">Login/Register</a>
+</nav>
+
+<section id="home" class="active">
+    <h2>Home</h2>
+    <p>Welcome to ShopEase — your one-stop online shopping destination! Discover a wide range of products, add to wishlist, and place your orders easily.</p>
+</section>
+
+<section id="products">
+    <h2>Products</h2>
+    <ul>
+        <li>Laptop - ₹60,000</li>
+        <li>Smartphone - ₹25,000</li>
+        <li>Headphones - ₹2,000</li>
+        <li>Wrist Watch - ₹1,500</li>
+    </ul>
+</section>
+
+<section id="orders">
+    <h2>Your Orders</h2>
+    <p>No orders yet. Start shopping now!</p>
+</section>
+
+<section id="wishlist">
+    <h2>Your Wishlist</h2>
+    <p>Items you’ve added to your wishlist will appear here.</p>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>ShopEase is an e-commerce platform built for simplicity and trust. We offer a wide variety of products and deliver happiness at your doorstep.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@shopease.com</p>
+    <p>Phone: +91 98765 43210</p>
+</section>
+
+<section id="login">
+    <h2>Login / Register</h2>
+    <form id="registerForm" onsubmit="return validateRegister()">
+        <h3>Register</h3>
+        <input type="text" id="regName" placeholder="Full Name" required>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="password" id="regPass" placeholder="Password" required>
+        <input type="submit" value="Register">
+    </form>
+    <br>
+    <form id="loginForm" onsubmit="return validateLogin()">
+        <h3>Login</h3>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPass" placeholder="Password" required>
+        <input type="submit" value="Login">
+    </form>
+</section>
+
+<script>
+    function showSection(id) {
+        document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+    }
+
+    function validateRegister() {
+        let name = document.getElementById("regName").value.trim();
+        let email = document.getElementById("regEmail").value.trim();
+        let pass = document.getElementById("regPass").value.trim();
+
+        if (name === "" || email === "" || pass === "") {
+            alert("All fields are required!");
+            return false;
+        }
+        alert("Registration successful!");
+        return false;
+    }
+
+    function validateLogin() {
+        let email = document.getElementById("loginEmail").value.trim();
+        let pass = document.getElementById("loginPass").value.trim();
+
+        if (email === "" || pass === "") {
+            alert("Please enter both email and password!");
+            return false;
+        }
+        alert("Login successful!");
+        return false;
+    }
+</script>
+
+</body>
+</html>
+
